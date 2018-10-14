@@ -6,6 +6,12 @@
         id="email"
         type="email"
         class="form-control">
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.minlength">Email should have minimum of {{ username.errors.minlength.requiredLength }} characters</div>
+          <div *ngIf="email.errors.email">Enter a valid Email Address</div>
+          <div *ngIf="email.errors.cannotContainSpace">No Space allowed</div>
+        </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
@@ -14,6 +20,11 @@
         id="password"
         type="text"
         class="form-control">
+        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.pattern">Password must contain atleast one letter, one number and be longer than 6 characters</div>
+          <div *ngIf="password.errors.cannotContainSpace">No Space allowed</div>
+        </div>
     </div>
     <button class="btn btn-primary" type="submit">Sign Up</button>
   </form>
